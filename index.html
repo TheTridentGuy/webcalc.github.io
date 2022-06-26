@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Web Calculator</title>
+        <script>
+            var expression = "";
+
+
+            function allclear(){
+                expression = "";
+                document.getElementById("expr").innerHTML = "...";
+            }
+
+            function rewrite(){
+                document.getElementById("expr").innerHTML = expression;
+            }
+
+            function negatenum(){
+                if(expression.startsWith("-")){
+                    expression = expression.substring(1);
+                }else{
+                    expression = "-" + expression;
+                }
+                rewrite();
+            }
+
+            function evaluateexpr(){
+                expression = eval(expression);
+                rewrite();
+            }
+
+            function addToExpr(addchar){
+                expression += addchar;
+                rewrite();
+            }
+        </script>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            .expr {
+                font-size: xx-large;
+                text-align: center;
+            }
+            .calbutton {
+                height: 0.4in;
+                width: 100%;
+                font-size: x-large;
+            }
+            table {
+                width: 100%;
+                align-content: center;
+            }
+            td {
+                width: 25%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="expr" id="expr">...</h1>
+        <table>
+            <tr>
+                <td><button class="calbutton" onclick="allclear()">AC</button></td>
+                <td><button class="calbutton" onclick="negatenum()">+/-</button></td>
+                <td><button class="calbutton" onclick="addToExpr('%')">%</button></td>
+                <td><button class="calbutton" onclick="addToExpr('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button class="calbutton" onclick="addToExpr('7')">7</button></td>
+                <td><button class="calbutton" onclick="addToExpr('8')">8</button></td>
+                <td><button class="calbutton" onclick="addToExpr('9')">9</button></td>
+                <td><button class="calbutton" onclick="addToExpr('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button class="calbutton" onclick="addToExpr('4')">4</button></td>
+                <td><button class="calbutton" onclick="addToExpr('5')">5</button></td>
+                <td><button class="calbutton" onclick="addToExpr('6')">6</button></td>
+                <td><button class="calbutton" onclick="addToExpr('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="calbutton" onclick="addToExpr('1')">1</button></td>
+                <td><button class="calbutton" onclick="addToExpr('2')">2</button></td>
+                <td><button class="calbutton" onclick="addToExpr('3')">3</button></td>
+                <td><button class="calbutton" onclick="addToExpr('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="calbutton" onclick="addToExpr('.')">.</button></td>
+                <td><button class="calbutton" onclick="addToExpr('0')">0</button></td>
+                <td><button class="calbutton" onclick="evaluateexpr()">=</button></td>
+                <td><button class="calbutton" onclick="addToExpr('^')">^</button></td>
+            </tr>
+        </table>
+    </body>
+</html>
